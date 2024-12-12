@@ -1,0 +1,537 @@
+@font-face {
+    font-family: minotaur; 
+    src: url(font/minotaur.ttf);
+}
+@font-face {
+    font-family: coolveticarg; 
+    src: url(font/coolveticarg.ttf);
+}
+
+:root {
+  --track-1-color: #39ad83;
+}
+/* background-color: var(--track-3-color) !important; */
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family: sans-serif;
+  font-size: 100%;
+  color: #EEE;
+  background-color: #111;
+}
+
+h1, h2, h3, h4, h5, h6{
+  
+}
+h1{
+  font-size: 2rem;
+  line-height: 2rem;
+  color: hotpink;
+  margin-top: 10px;
+}
+h2{
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: hotpink;
+}
+h4{
+  color: orange;
+  padding-bottom: 17px;
+}
+h5{
+  color: orange;
+  padding-bottom: 7px;
+}
+
+
+
+ul{
+  text-decoration: none;
+  list-style: none;
+}
+
+a{
+  color:#6baee9;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+
+select, input{
+  padding: 10px;
+  border: 0;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+input[type='range']{
+  padding: 0;
+  width: 50%;
+}
+input[type='number']{
+  padding: 5px;
+  width: 5rem;
+}
+
+button{
+  padding: 5px;
+  border: 0;
+}
+button:hover{
+  cursor: pointer;
+}
+
+
+
+/*************************************************/
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colnav {
+  flex: calc(100%  / 6);
+  max-width: calc(100% / 6);
+  padding: 10px 10px 0 10px;
+}
+
+.col4 {
+  flex: 25%;
+  max-width: 25%;
+  padding: 10px;
+}
+.col3 {
+  flex: 33.33333%;
+  max-width: 33.33333%;
+  padding: 10px;
+}
+.col2 {
+  flex: 50%;
+  max-width: 50%;
+  padding: 10px;
+}
+.col1 {
+  flex: 100%;
+  max-width: 100%;
+  padding: 10px;
+}
+
+/*************************************************/
+
+.clear{
+  clear:both;
+  height: 0;
+  width: 0;
+  background: none;
+  background-color: transparent;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.txtl{
+  text-align: left;
+}
+.txtr{
+  text-align: right;
+}
+
+.w800{
+  width: 800px;
+  margin: 0 auto;
+}
+.w1000{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.w100p{
+  width: 100%;
+}
+
+.sb{
+  margin-top: 15px;
+}
+
+/*************************************************/
+.row{
+  margin: 24px auto;
+  background-color: #222;
+  border-radius: 5px;
+  padding: 0;
+  
+}
+
+.row h2{
+  padding: 20px 0;
+}
+
+.row > div{
+  padding-bottom: 30px;
+}
+
+/*************************************************/
+
+div#top {
+  width: 100%;
+  text-align: center;
+  background-color: #222;
+  min-width: 1000px;
+  padding: 0 20px 20px 20px;
+}
+
+#title h2{
+  font-size: 1rem;
+  line-height: 2rem;
+  font-style: italic;
+}
+#title button{
+  font-size: 0.8rem;
+  background-color: transparent;
+  color: #6baee9;
+}
+#title button:hover{
+  text-decoration: underline;
+}
+
+nav{
+  padding: 0 40px;
+}
+div#main{
+  width: 100%;
+  min-width: 1000px;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+div#main > div{
+  display: none;
+}
+/*************************************************/
+/* DEVICE / CHANNEL */
+
+select#slt_device{
+  margin-top: 10px;
+}
+
+button#bt_refresh{
+  margin-left: 10px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  vertical-align:bottom;
+}
+button#bt_refresh:hover{
+  background-color: #CCC;
+}
+
+#led{
+  width: 10px;
+  height: 10px;
+  background-color: #CC0000;
+  border-radius: 5px;
+  margin: 10px auto 0 auto;
+  display: none;
+}
+
+/*******/
+#devMode{
+  margin: 5px 0 5px 0;
+}
+
+#espChan .btChan{
+  display: inline-block;
+  width: 4%;
+  padding: 2px;
+}
+#espChan .btChan button{
+  width: 100%;
+}
+
+#devMode button[data-activ='on']{
+  background-color: orange;
+}
+#espChan button[data-activ='on']{
+  background-color: orange;
+}
+
+/*************************************************/
+/* NAV */
+nav button{
+  border: 1px solid #222;
+  background-color: #444;
+  color: orange;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin: 0 10px;
+  width: 100%;
+  padding: 10px;
+}
+nav button:hover{
+  border: 1px solid orange;
+}
+nav .onslt{
+  background-color: orange;
+  border: 1px solid orange;
+  color: black;
+}
+
+
+/*************************************************/
+/* PROGRAM CHANGE */
+
+div#esp_button_pc button{
+  width: calc(100% / 16);
+  border: 2px solid #222;
+  padding: 20px 10px;
+}
+div#esp_button_pc button:hover{
+  border: 2px solid orange;
+  background-color: #AAA;
+}
+
+
+/*************************************************/
+/* MIDI NOTE */
+
+div#esp_button_pn .line > *{
+  width: calc(100% / 13);
+  border: 2px solid #222;
+  display: inline-block;
+}
+div#esp_button_pn button:hover{
+  border: 2px solid orange;
+  background-color: #AAA;
+}
+
+button[data-col='2'], button[data-col='4'], button[data-col='7'], button[data-col='9'], button[data-col='11']{
+  background-color: #777;
+}
+
+/*************************************************/
+/* CONTROL CHANGE */
+
+div#esp_button_cc button{
+  width: calc(100% / 16);
+  border: 2px solid #222;
+  padding: 20px 10px;
+}
+div#esp_button_cc button:hover{
+  border: 2px solid orange;
+  background-color: #AAA;
+}
+div#esp_button_cc button.onslt{
+  background-color: orange;
+  color: #000;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 20px;
+  background: #FFF;
+  outline: none;
+  margin: 20px auto;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 40px;
+  background: orange;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 40px;
+  background: orange;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+div#dispvalcc{
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+div#esp_other_cc table{
+  margin: 0 auto;
+}
+div#esp_other_cc td{
+  padding: 5px;
+}
+div#esp_other_cc button{
+  padding: 8px;
+  border: 2px solid #222;
+  border-radius: 4px;
+}
+div#esp_other_cc button:hover{
+  border: 2px solid orange;
+}
+
+/*************************************************/
+/* PATTERN GENRATOR */
+
+table#t_gnrtr{
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+}
+table#t_gnrtr td{
+  padding: 4px;
+}
+
+button#btgo_gnrtr{
+  width: 70%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #177bd3;
+  border-radius: 5px;
+}
+button#btgo_gnrtr:hover{
+  background-color: #0c5391;
+  color: #FFF;
+}
+button#btgo_gnrtr:disabled{
+  background-color: #CCC;
+}
+
+label.activ{
+  color: orange;
+}
+
+td.flch:hover, td.flch input:hover, td.flch label:hover{
+  color: orange;
+  cursor: pointer;
+}
+
+/*******/
+
+div#esp_pianorol{
+  padding: 10px;
+  text-align: center;
+  display:none;
+}
+div#esp_pianorol table{
+  width: 100%;
+  border-collapse: collapse;
+}
+div#esp_pianorol table th{
+  border-bottom: 1px solid #555;
+  color: orange;
+  width: 1%;
+}
+div#esp_pianorol table td{
+  border-bottom: 1px solid #555;
+}
+div#esp_pianorol table tr td:first-child{
+  padding: 5px;
+  color: orange;
+}
+
+button#bt_play{
+  margin: 20px 0;
+  padding: 10px;
+  width: 200px;
+  background-color: #177bd3;
+  border-radius: 5px;
+  color: #FFF;
+  font-weight: bold;
+}
+button#bt_play:hover{
+  background-color: #0c5391;
+  color: #FFF;
+}
+button#bt_play:disabled{
+  background-color: #CCC;
+}
+
+/*************************************************/
+/* LOG */
+#t_log {
+  min-width: 50%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+#t_log tr:hover td{
+  background-color: #444;
+}
+#t_log th{
+  color: orange;
+  padding: 5px;
+  border-bottom: 1px solid #555
+}
+#t_log td{
+  padding: 5px;
+  color: #5fbd5f;
+  border-bottom: 1px solid #555
+}
+#t_log button{
+  background-color: #777;
+}
+#t_log button:hover{
+  color: orange;
+}
+
+/*************************************************/
+
+/* CHECKER */
+div#infoConek p{
+  margin: 10px 0;
+}
+
+div#inout{
+  margin: 0 100px;
+}
+
+div#inout li{
+  margin-bottom:20px;
+}
+
+div#inout li div{
+  text-align: left;
+  margin:0 0 10px 40px;
+}
+
+div#inout li div:first-child{
+  float: left;
+  margin-left: 0;
+}
+
+div#inout li div.n{
+  font-weight: bold;
+  color: orange;
+}
+div#inout li div.i{
+  font-size: 0.8rem;
+}
+
+div#esp_info_mc span.good{
+  background-color: #5fbd5f;
+  padding: 2px 5px;
+  color: #000;
+}
+div#esp_info_mc span.warn{
+  background-color: #d55858;
+  padding: 2px 5px;
+  color: #000;
+}
+
+div#inout h3{
+  font-size: 1.4rem;
+  background-color: #555;
+  padding: 7px 0;
+  margin: 30px 0;
+  border-radius: 5px;
+}

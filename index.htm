@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Web midi send">
+		<meta name="author" content="Nathan Palétat">
+		<meta name="keywords" content="midi, inputs, outputs, control change, automations, messages, filters, devices, channels">
+		<title>Midi Send</title>
+		<link rel="icon"  href="favicon.svg">
+		<link rel="stylesheet" href="css/app.css" type="text/css" media="all" />
+	</head>
+	<body>
+		<div id='top'>
+			
+			<div class="flex">
+				<div id='title' class="col4">
+					<h1>Midi Send</h1>
+					<h2> - Browser Midi Application - </h2>
+					<button>Download</button>
+				</div>
+				<div class="col4" id='esp_slt_device'>
+					<h5>Device Midi OUT</h5>
+					<select id='slt_device'></select>
+					<div id='led'></div>
+				</div>
+				<div class="col2" id='esp_channels'>
+					<h5>Channel Midi OUT</h5>
+					<div id='esp_modchan'></div>
+				</div>
+			</div>
+			<nav class="flex">
+				<div class="colnav"><button data-cible="esp_progchange">Program Change</button></div>
+				<div class="colnav"><button data-cible="esp_padnote">Midi Note</button></div>
+				<div class="colnav"><button data-cible="esp_control_change">Control Change</button></div>
+				<div class="colnav"><button data-cible="esp_pattern">Pattern Generator</button></div>
+				<div class="colnav"><button data-cible="esp_midi_checker" class="">Midi Checker</button></div>
+				<div class="colnav"><button data-cible="esp_log" class="">Log</button></div>
+			</nav>
+		</div>
+		<div id='main'>
+			<div class="flex row w1000" id="esp_midi_checker" >
+				<h2 class="col1">Midi Checker</h2>
+				<div class="col1" id="infoConek"></div>
+				<div class="col1 flex" id="esp_info_mc">
+					<div class="col1" id="inout">
+						<h3>Inputs</h3>
+						<ul class="in" id='ulin'></ul>
+						<h3>Outputs</h3>
+						<ul class="out" id='ulout'></ul>
+					</div>
+				</div>
+			</div>
+			<div class="flex row w1000" id="esp_progchange" >
+				<h2 class="col1">Send Program Change</h2>
+				<div class="col1" id="esp_button_pc"></div>
+			</div>
+			<div class="flex row w1000" id="esp_padnote" >
+				<h2 class="col1">Send Midi Note</h2>
+				<div class="col1" id="esp_button_pn"></div>
+			</div>
+			<div class="flex row w1000" id="esp_control_change" >
+				<h2 class="col1">Send Control Change</h2>
+				<input class="slider" id="value_cc" type="range" max="127" min="0" value="0">
+				<div id="dispvalcc">0</div>
+				<div class="col1" id="esp_button_cc"></div>
+				<div class="col1" id="esp_other_cc">
+					<table>
+						<tr>
+							<td class="txtr">120</td>
+							<td class="txtl"><button value="allsoundoff">All sound OFF</button></td>
+						</tr>
+						<tr>
+							<td class="txtr">121</td>
+							<td class="txtl"><button value="resetallcontrollers">Reset all controllers</button></td>
+						</tr>
+						<tr>
+							<td class="txtr">122</td>
+							<td class="txtl"><button value="localcontrolon">Local control ON</button> <button value="localcontroloff">Local control OFF</button></td>
+						</tr>
+						<tr>
+							<td class="txtr">123</td>
+							<td class="txtl"><button value="allnotesoff">All notes OFF</button></td>
+						</tr>
+						<tr>
+							<td class="txtr">124 & 125</td>
+							<td class="txtl"><button value="omnimodeon">Omni mode ON</button> <button value="omnimodeoff">Omni mode OFF</button></td>
+						</tr>
+						<tr>
+							<td class="txtr">126</td>
+							<td class="txtl"><button value="monomodeon">Mono mode ON</button></td>
+						</tr>
+						<tr>
+							<td class="txtr">127</td>
+							<td class="txtl"><button value="polymodeon">Poly mode ON</button></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div id="esp_pattern">
+				<div class="flex row w800" id="esp_pg">
+					<h2 class="col1">Pattern Generator</h2>
+					<div class="col1" id="esp_config_gnrtr">
+						<table id="t_gnrtr">
+							<tr>
+								<td>BPM</td>
+								<td><input id="gnrtr_bpm" type="number" value="120" min="10" max="900"></td>
+							</tr>
+							<tr>
+								<td>Step</td>
+								<td><input id="gnrtr_nbrstep" type="number" value="32" min="1" max="64"></td>
+							</tr>
+							<tr>
+								<td>Step actif</td>
+								<td><input id="gnrtr_nbrstepactif" type="number" value="16" min="1" max="64"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td><td>Default</td><td>Random</td><td>From</td><td>To</td>
+							</tr>
+							<tr>
+								<td>Octave</td>
+								<td><input id="gnrtr_def_oct" type="number" value="4" min="0" max="10"></td>
+								<td class="flch"><input id="gnrtr_chk_oct" type="checkbox">&nbsp;&nbsp;<label for="gnrtr_chk_oct" class="">⟼</label></td>
+								<td><input id="gnrtr_from_oct" type="number" value="3" min="0" max="10"></td>
+								<td><input id="gnrtr_to_oct" type="number" value="5" min="0" max="10"></td>
+							</tr>
+							<tr>
+								<td>Velocity</td>
+								<td><input id="gnrtr_def_vel" type="number" value="100" min="0" max="127"></td>
+								<td class="flch"><input id="gnrtr_chk_vel" type="checkbox">&nbsp;&nbsp;<label for="gnrtr_chk_vel" class="">⟼</label></td>
+								<td><input id="gnrtr_from_vel" type="number" value="60" min="0" max="126"></td>
+								<td><input id="gnrtr_to_vel" type="number" value="110" min="0" max="127"></td>
+							</tr>
+							<tr>
+								<td>Duration</td>
+								<td><input id="gnrtr_def_dur" type="number" value="250" min="1" max="5000"></td>
+								<td class="flch"><input id="gnrtr_chk_dur" type="checkbox">&nbsp;&nbsp;<label for="gnrtr_chk_dur" class="">⟼</label></td>
+								<td><input id="gnrtr_from_dur" type="number" value="300" min="1" max="4999"></td>
+								<td><input id="gnrtr_to_dur" type="number" value="800" min="1" max="5000"></td>
+							</tr>
+						</table>
+						<button id="btgo_gnrtr" type="button">Generate</button>
+					</div>
+				</div>
+				<div class="row w100p" id="esp_pianorol">
+					<button id='bt_play' type='button'>PLAY</button>
+					<div id="esp_pianogrid"></div>
+				</div>
+			</div>
+			<div class="flex row w100p" id="esp_log" >
+				<h2 class="col1">Log</h2>
+				<div class="col1" id="esp_displog"></div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+		<script src="js/o/knob.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/checker.js"></script>
+		<script src="js/device.js"></script>
+		<script src="js/channel.js"></script>
+		<script src="js/progchange.js"></script>
+		<script src="js/padnote.js"></script>
+		<script src="js/controlchange.js"></script>
+		<script src="js/pattern.js"></script>
+		<script src="js/log.js"></script>
+		<script> (function() { ready(); })(); </script>
+	</body>
+</html>
